@@ -85,7 +85,7 @@ source devel/setup.bash
 - 对于 receiving topic, IP和端口应该是远程源IP和端口，因为它连接到 "tcp://srcIP:srcPort".
 - 话题名称就是ros话题名
 
-(The `max_freq` only guarantees the sending frequency is lower than that but not be that. If the send_topics frequency is larger than max_freq, the node will decrease it by 2x, 3x, ... until it satisfies the max_freq. check [github issue #2](https://github.com/shupx/swarm_ros_bridge/issues/2))
+(The `max_freq` only guarantees the sending frequency is lower than that but not be that. If the send_topics frequency is larger than max_freq, the node will decrease it by 2x, 3x, ... until it satisfies the max_freq.
 
 2. Launch the bridge_node:
 

@@ -79,7 +79,7 @@ source devel/setup.bash
 
 ## Usage
 
-1. Specify the IP and ROS topic information in `config/ros_topics.yaml`. 
+1. 配置 IP and ROS topic information in `config/ros_topics.yaml`. 
 
 - 对于发送主题，IP是self(例如  * *)，端口应该不同，因为它绑定到“tcp://* *:port”. 
 - 对于 receiving topic, IP和端口应该是远程源IP和端口，因为它连接到 "tcp://srcIP:srcPort".

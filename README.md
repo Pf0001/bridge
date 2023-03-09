@@ -6,7 +6,7 @@ A lightweight middle interface ROS package mainly based on [ZeroMQ](https://zero
 
 An example of two ROS robots communicating with each other through swarm_ros_bridge is shown below:
 
-![framework](pictures/swarm_ros_bridge_framework.png)
+![framework](pictures/struct.png)
 
 Compared with ROS1 multi-robot wireless communication, it has the following benefits:
 

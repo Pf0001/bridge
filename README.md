@@ -22,6 +22,7 @@ Compared with ROS2 DDS communication, it may have the following benefits:
 
 核心工作：
 利用ROS1自带的serialization对ROS话题消息进行序列化和反序列化，然后利用zeroMQ的PUB/SUB模式将消息发送，并为每个ROS接收话题建立一个接收线程。
+
 ROS wiki page: https://wiki.ros.org/swarm_ros_bridge
 
 source code: https://github.com/shupx/swarm_ros_bridge.git

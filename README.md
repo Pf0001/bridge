@@ -103,9 +103,9 @@ roslaunch swarm_ros_bridge test.launch
 
 ### * More ROS message types
 
-The default supported ROS message types are only `sensor_msgs/Imu` and `geometry_msgs/Twist`. If you need more types:
+默认支持 `sensor_msgs/Imu` and `geometry_msgs/Twist`. 传输其他ROS类型消息:
 
-1. Modify the macros about MSG_TYPEx and MSG_CLASSx in `include/ros_sub_pub.hpp`, then it will generate template functions for different ros message types.  
+1.更改 MSG_TYPEx and MSG_CLASSx in `include/ros_sub_pub.hpp`, then it will generate template functions for different ros message types.  
 
 ```cpp
 // In ros_sub_pub.hpp

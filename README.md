@@ -19,8 +19,8 @@ Compared with ROS2 DDS communication, it may have the following benefits:
 
 -  **Lightweight**: It is a small ROS bridge node subscribing and sending remote ROS topics, so connecting with other ROS nodes is easy.
 -  **Reliable**: It uses ZeroMQ socket communication based on TCP protocol while ROS2 is based on DDS, whose default protocol is UDP (unreliable). DDS is mainly designed for data exchange between native processes under wired communication rather than remote wireless communication.
-- 核心工作：
 
+核心工作：
 利用ROS1自带的serialization对ROS话题消息进行序列化和反序列化，然后利用zeroMQ的PUB/SUB模式将消息发送，并为每个ROS接收话题建立一个接收线程。
 ROS wiki page: https://wiki.ros.org/swarm_ros_bridge
 

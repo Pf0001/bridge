@@ -2,9 +2,8 @@
 
 ## Introduction
 
-A lightweight middle interface ROS package mainly based on [ZeroMQ](https://zeromq.org). It enables the specified ROS messages transmission among swarm robots through socket communication. The purpose of this package is to replace the traditional way of [running ROS across multiple machines in ROS1](https://wiki.ros.org/ROS/Tutorials/MultipleMachines), which has some drawbacks under swarm robots situation.
-
-An example of two ROS robots communicating with each other through swarm_ros_bridge is shown below:
+一个轻量级中间接口ROS包，主要基于[ZeroMQ](https://zeromq.org)。通过socket通信实现群机器人之间指定ROS消息的传输。此包的目的是取代传统的[在ROS1中跨多台机器运行ROS](https://wiki.ros.org/ROS/Tutorials/MultipleMachines)的方式，这种方式在群机器人情况下存在一些缺点。
+例如： 发送栅格地图与tf树:
 
 ![framework](pictures/struct.png)
 
@@ -65,12 +64,11 @@ csdn blog (in chinese): https://blog.csdn.net/benchuspx/article/details/12857672
 ## clone this package
 mkdir -p swarm_ros_bridge_ws/src  # or your own ros workspace
 cd swarm_ros_bridge_ws/src
-git clone https://gitee.com/shu-peixuan/swarm_ros_bridge.git
-# or 'git clone https://github.com/shupx/swarm_ros_bridge.git'
+git clone https://github.com/Pf0001/bridge.git
 
 ## install dependencies
 sudo apt install libzmqpp-dev
-# or 'rosdep install --from-path swarm_ros_bridge/'
+
 
 ## build
 cd ../
@@ -83,8 +81,9 @@ source devel/setup.bash
 
 1. Specify the IP and ROS topic information in `config/ros_topics.yaml`. 
 
-- For the sending topic, IP is self IP (* for example) and port should be different as it binds to the "tcp://*:port". 
-- For the receiving topic, IP and port should be the remote source IP and port as it connects to the "tcp://srcIP:srcPort".
+- 对于发送主题，IP是self(例如  * *)，端口应该不同，因为它绑定到“tcp://* *:port”. 
+- 对于 receiving topic, IP和端口应该是远程源IP和端口，因为它连接到 "tcp://srcIP:srcPort".
+- 话题名称就是ros话题名
 
 (The `max_freq` only guarantees the sending frequency is lower than that but not be that. If the send_topics frequency is larger than max_freq, the node will decrease it by 2x, 3x, ... until it satisfies the max_freq. check [github issue #2](https://github.com/shupx/swarm_ros_bridge/issues/2))
 
@@ -108,9 +107,10 @@ The default supported ROS message types are only `sensor_msgs/Imu` and `geometry
 ```cpp
 // In ros_sub_pub.hpp
 // uncomment and modify the following lines:
-#include <xxx_msgs/yy.h>
-#define MSG_TYPE3 "xxx_msgs/yy"
-#define MSG_CLASS3 xxx_msgs::yy
+//例如
+#include <sensor_msgs/PointCloud2.h>
+#define MSG_TYPE3 "sensor_msgs/PointCloud2"
+#define MSG_CLASS3 sensor_msgs::PointCloud2
 ```
 
 We support up to 10 types modification. If that is still not enough, then you should modify the `topic_subscriber()`, `topic_publisher()` and `deserialize_publish()` in `include/ros_sub_pub.hpp` according to their styles.
